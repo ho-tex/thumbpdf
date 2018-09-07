@@ -345,25 +345,37 @@ F. USER INTERFACE
 * Additional thumbnails: `<jobname>.tno'
   If `<jobname>.tno' is found, the thumbnails are automatically
   included by the program `thumbpdf.tex'.
-  Format of this file:
+  Format of this file:#
+
+```
   \thumb{filename without `.png' extension}% or
   \thumb[name]{filename with/without extension}
+```
+
   Examples:
+
+```
     \thumb{one}%      --> \thisthumb{one}, recommended
     \thumb{one.png}%  --> \thisthumb{one.png}
     \thumb[two]{one}% --> \thisthumb{two}
     \thumb[one]{./extrathumb/one.png}% --> thisthumb{one}
-  The first example shows that the `.png' extension
+```
+
+The first example shows that the `.png' extension
   is supported and recommended. But `.jpg' or `.tif'
   files also work.
   This data can be included in the main tex file that
   includes `thumbpdf.sty' with the \DeclareThumbs feature:
-    \usepackage{thumbpdf}% or \input thumbpdf.sty
+
+```
+\usepackage{thumbpdf}% or \input thumbpdf.sty
     \DeclareThumbs{
       \thumb{one}
       \thumb[two]{./extra/two.jpg}
     }
-  Then the file `\jobname.tno' is written with the thumbnail
+```
+
+Then the file `\jobname.tno' is written with the thumbnail
   declarations. (LaTeX's \nofiles is respected.)
 * Program `thumbpdf.tex'
   Execept for debugging there is no reason for an user to call it
@@ -458,54 +470,68 @@ I. KNOWN PROBLEMS
 
 J. HISTORY
 ==========
+
 1999/02/14 v1.0 first release
+
 1999/02/23 v1.1
   * Bug in thumbpdf.sty removed (#2->#1).
   * New option in thumbpdf.pl: --resolution.
   * Automatic calculation of the resolution for Ghostscript
     (max. size 106x106).
+
 1999/03/01 v1.2
   * Optimizition: indirect objects for length values removed.
+
 1999/03/12 v1.3
   * Copyright: LPPL
+
 1999/05/05 v1.4
   * Detecting of cygwin-perl.
   * Save memory by sharing `RGB' objects (devices: png16, png256).
+
 1999/06/13 v1.5
   * Gs detection extended (thumbpdf.pl).
   * Installation part of readme.txt rewritten and table of contents
     added.
+
 1999/07/27 v1.6
   * Bug in thumbpdf.sty fixed (handling of \pdfpageattr).
   * Warning if there are missing thumbs (thumbpdf.sty).
   * Added section `Known Problems' in `readme.txt'.
+
 1999/08/08 v1.7
   * Bug in thumbpdf.sty fixed. This bug was introduced in
     version 1.6, therefore this version should not be used.
   * Adaptation for pdfTeX version 0.14a.
   * LPPL 1.1
+
 1999/09/09 v1.8
   * Bug in thumbpdf.sty fixed. \PackageWarning cannot be used
     in \shipout, because \protect has been set to \noexpand
     (mysterious LaTeX behaviour?).
+
 1999/09/16 v1.9
   * The perl script now detects direct /Length objects,
     that pdfTeX uses including JPEG images.
+
 2000/01/11 v1.10
   * Bug in /Length detection removed.
   * Direct /Length in RGB objects supported.
   * \immediate before \pdfximage removed.
   * thumbpdf.sty revised.
+
 2000/01/19 v1.11
   * Small fix for perl versions that cannot handle "my"
     in "for" loops.
   * LPPL 1.2
+
 2000/02/11 v1.12 (not released)
   * Option `clean' added.
   * `<jobname>.tnd' replaces `thumbpdf.tex', if thumbpdf is called:
      thumbpdf [options] <jobname>[.pdf]
   * `<jobname>.tno' can be used instead of `thumbopt.tex'.
   * \DeclareThumbs added.
+
 2000/02/22 v2.0
   * Support for the dvips/ps2pdf route by pdfmark specials.
   * Temporary files are removed.
@@ -514,32 +540,40 @@ J. HISTORY
     thumbdta.tex ==> <jobname>.tpt, <jobname>.tpm added
     thumbopt.tex ==> <jobname>.tno
   * Syntax change: <jobname> is now required.
+
 2000/02/28 v2.1
   * Environment variable `THUMBPDF' supported.
   * `thumbpdf.cfg' supported.
   * TDS place for readme.txt: texmf/doc/generic/thumbpdf/readme.txt
   * Errors in `readme.txt' corrected.
+
 2000/03/07 v2.2
   * Support for Distiller 3 and 4, the streams are uncompressed.
   * Call of gs is changed in order to show the currently processed
     page number of the pdf file.
   * Option --printgscmd creates the command line file `thumbpdf.gs'
     for the Ghostscript call.
+
 2000/03/22 v2.3
   * Bug fix: --useps now works.
+
 2000/04/10 v2.4
   * Fix for ActiveState Perl 5.6.0: uc line changed, fork removed.
     (Thanks to Andreas Buehmann <andreas.buehmann@gmx.de>.)
   * Test of `thumbpdf.tex' version.
+
 2000/07/29 v2.5
   * Save trick in call of ghostscript.
   * Undocumented option --gspages added.
   * Problem with ActiveState perl 5.6.0 (win32) added
     to section "Known Problems".
+
 2000/09/27 v2.6
   * Information about ActiveState perl 5.6.0 updated.
+
 2000/10/27 v2.7
   * -dFIXEDMEDIA=0 added in gs call.
+
 2001/01/12 v2.8:
   * Bug fix in dvips mode and active option `level2':
     pack parameter corrected for little-endian machines.
@@ -550,19 +584,24 @@ J. HISTORY
   * Ghostscript uses the MediaBox for calculating the
     page size. For version 6.50 a patch is added to use
     the /CropBox instead.
+
 2001/03/29 v2.9:
   * Option --password added.
+
 2001/04/02 v2.10:
   * Small corrections in readme.txt, contributed by Michael Wiedmann.
+
 2001/04/26 v2.11:
   * Option --antialias added (suggestion of Juergen Bausa).
   * This version is not released.
+
 2002/01/11 v3.0:
   * Syntax of option --antialias changed. The option is enabled
     as default, so that the ghostscript step is now slower.
   * Support for VTeX's PS mode added.
   * Greek mode added (experimental).
   * Signal handlers added for cleanup.
+
 2002/05/26 v3.1:
   * SIG_HUP unkown in Windows.
   * Bug fix: The signal function for __DIE__ "cleanup" aborts
@@ -572,44 +611,59 @@ J. HISTORY
     removed from list. "vtexpdfmark" was detected,
     "vtex" did not work and perhaps it will be used
     later for VTeX in PDF mode.
+
 2002/05/26 v3.2:
   * Fix: "MacOS/X: darwin" is now not interpreted as
     Windows.
+
 2003/03/19 v3.3:
   * Fix for gs 8.00 in mode dvips:
     THB_DistillerPatch also applied to ghostscript >= 8.00.
+
 2003/06/06 v3.4:
   * Bug fix, two forgotten "pop"s added for Distiller case.
+
 2004/10/24 v3.5:
   * Revert Cygwin detection: is unix (request by Jan Nieuwenhuizen).
   * LPPL 1.3.
+
 2004/11/19 v3.6:
   * Bug fix for dvips mode and gs < 8.00 (/stackunderflow in pop).
+
 2004/11/19 v3.7:
   * For easier debugging, the special thumbpdf objects are now
     valid PDF objects that are referenced in the Catalog.
   * Remove of extra '\n' before "endstream" that is added
     by pdfTeX 1.20a.
+
 2005/07/06 v3.8:
   * Fix because of pdfTeX 1.30.
+
 2007/11/07 v3.9:
   * Deprecation warning of perl 5.8.8 fixed.
+
 2008/04/16 v3.10:
   * TDS archive `thumbpdf.tds.zip' provided.
+
 2010/07/07 v3.11:
   * \pdfcompresslevel=0 and \pdfminorversion=4 added for thumbpdf.tex.
   * \input is used with file name extension for "thumbpdf.tex".
   * Warning if \pdfobjcompresslevel>0.
+
 2011/08/09 v3.12:
   * Support for LuaTeX added.
+
 2011/08/10 v3.13:
   * Use gswin64c in Windows with 64 bits.
   * Fix of version date of thumbpdf.sty.
+
 2012/04/09 v3.14:
   * Fix for plain TeX compatibility (offending \RequirePackage).
+
 2012/04/18 v3.15:
   * Option --version added.
   * File `readme.txt' renamed to `README'.
+
 2014/07/15 v3.16
   * Patch for `thumbpdf.pl' by Norbert Preining because of   
     pdfTeX 1.40.15 (TeX Live 2014).
