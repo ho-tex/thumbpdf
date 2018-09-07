@@ -1,4 +1,4 @@
-README for project thumbpdf 2014/07/15 v3.16
+README for project thumbpdf 2018/09/07 v3.17
 
 TABLE OF CONTENTS
 =================
@@ -667,3 +667,7 @@ J. HISTORY
 2014/07/15 v3.16
   * Patch for `thumbpdf.pl' by Norbert Preining because of   
     pdfTeX 1.40.15 (TeX Live 2014).
+
+2018/09/07 v3.17
+  * Patch for `thumbpdf.pl' by David Carlisle for new perl { regex handling
+  * Update warning messages for Oberdiek bundle issue 46 from Karl Berry

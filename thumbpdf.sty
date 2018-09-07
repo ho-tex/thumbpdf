@@ -1,6 +1,6 @@
 % File:        thumbpdf.sty
 % Project:     thumbpdf
-% Version:     2014/07/15 v3.16
+% Version:     2018/09/07 v3.17
 % Author:      Heiko Oberdiek
 %
 % Function:    Inclusion of thumbnails
@@ -102,6 +102,8 @@
 %                                (offending \RequirePackage).
 %              2012/04/18 v3.15
 %              2014/07/15 v3.16
+%              2018/09/07 v3.17 Abort not just warn on terminal if pdfcompression is enabled.
+%                               (David Carlisle as suggested by Karl Berry)
 %
 % \THB@ is the prefix for internal command names.
 %
@@ -122,7 +124,7 @@
       \def\x{\endgroup\ProvidesPackage{thumbpdf}}%
     \fi
   \fi
-\x[2014/07/15 v3.16 Inclusion of thumbnails (HO)]%
+\x[2018/09/07 v3.17 Inclusion of thumbnails (HO)]%
 
 % Dummy for \thisthumb and \DeclareThumbs. It is overwritten,
 % if the checks succeed and the whole package is loaded.
@@ -280,9 +282,8 @@
   \expandafter\ifx\csname pdfobjcompresslevel\endcsname\relax
   \else
     \ifnum\pdfobjcompresslevel>0 %
-      \PackageWarningNoLine{\THB@name}{%
-        Compressed PDF objects of PDF 1.5 are not supported%
-      }%
+      \wlog{THUMBPDF: Compressed PDF objects of PDF 1.5 are not supported}%
+      \endgroup\expandafter\expandafter\expandafter\endinput
     \fi
   \fi
 
