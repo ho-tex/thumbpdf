@@ -12,10 +12,16 @@ cp thumbpdf.sty thumbpdf.tex tds/tex/generic/thumbpdf
 
 cd tds
 zip -r thumbpdf.tds.zip doc scripts tex
-mv thumbpdf.tds.zip ..
+mv thumbpdf.tds.zip ../..
+
+cd ..
+rm -r tds
 
 cd ..
 
-rm -r tds
 
-zip thumbpdf.zip thumbpdf.{tex,sty,pl} README.md thumbpdf.tds.zip
+rm -f thumbpdf.zip
+zip thumbpdf.zip thumbpdf/thumbpdf.{tex,sty,pl} thumbpdf/README.md thumbpdf.tds.zip
+
+mv thumbpdf.zip thumbpdf.tds.zip thumbpdf
+
