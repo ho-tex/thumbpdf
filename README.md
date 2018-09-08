@@ -415,12 +415,15 @@ G. AUTHOR
 =========
 Heiko Oberdiek
 Email: heiko.oberdiek at googlemail.com
+       ho-tex at tug.org
 
 H. QUESTIONS, SUGGESTED IMPROVEMENTS
 ====================================
 If you have questions, problems with `thumbpdf', error reports,
 if you have improvements or want to have additional features,
-please send them to the author.
+please send them via github issues:
+https://github.com/ho-tex/thumbpdf/issues
+
 
 Other ps->pdf routes:
 * pstill: I did not succeed. It seems that the used pdfmark specials
@@ -669,5 +672,7 @@ J. HISTORY
     pdfTeX 1.40.15 (TeX Live 2014).
 
 2018/09/07 v3.17
+  * Move to ho-tex github organisation
+    https://github.com/ho-tex/thumbpdf
   * Patch for `thumbpdf.pl' by David Carlisle for new perl { regex handling
   * Update warning messages for Oberdiek bundle issue 46 from Karl Berry
