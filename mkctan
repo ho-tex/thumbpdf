@@ -6,7 +6,7 @@ mkdir -p tds/doc/generic/thumbpdf
 mkdir -p tds/scripts/thumbpdf
 mkdir -p tds/tex/generic/thumbpdf
 
-cp README.md tds/doc/generic/thumbpdf/README
+cp README.md tds/doc/generic/thumbpdf
 cp thumbpdf.pl tds/scripts/thumbpdf
 cp thumbpdf.sty thumbpdf.tex tds/tex/generic/thumbpdf
 
